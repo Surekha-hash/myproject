@@ -1,0 +1,31 @@
+services:
+
+  network:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vse-network
+    command: ["/app/vse-network"]
+    ports:
+      - "9001:9001"
+
+  billing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vse-billing
+    command: ["/app/vse-billing"]
+    ports:
+      - "9002:9002"
+
+  control:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vse-control
+    command: ["/app/vse-control"]
+    ports:
+      - "9000:9000"
+    depends_on:
+      - network
+      - billing
