@@ -26,6 +26,12 @@ services:
     command: ["/app/vse-control"]
     ports:
       - "9000:9000"
+    environment:
+      CONTROL_PORT: 9000
+      NETWORK_HOST: network
+      NETWORK_PORT: 9001
+      BILLING_HOST: billing
+      BILLING_PORT: 9002
     depends_on:
       - network
       - billing
